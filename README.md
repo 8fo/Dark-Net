@@ -1,2 +1,5 @@
 # DDOS-Net
 Proof Of Concept Python3 DDos Net - Powered By A API
+
+ - NOTE: THIS IS PROOF OF CONCEPT
+ - I'M NOT RESPONSIBLE FOR HOW YOU USE THIS
