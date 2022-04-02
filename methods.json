@@ -1,12 +1,8 @@
 {
-  "https://ddosapi1.com/api.php?method=<<$method>>&target=<<$target>>&port=<<$port>>&time=<<$time>>": [
+  "api": "https://ddosapi1.com/api.php?method=<<$method>>&target=<<$target>>&port=<<$port>>&time=<<$time>>",
+  "methods": [
     "UDP",
     "TCP",
-    "OVH"
-   ],
-  "https://ddosapi2.com/api.php?method<<$method>>&target=<<$target>>&port=<<$port>>&time=<<$time>>": [
     "HTTP",
-    "CF-KILL",
-    "HTTP-BYPASS"
-   ]
+    "OVH"
 }
